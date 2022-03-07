@@ -1,0 +1,86 @@
+---
+title: "Module 3 - Assignment"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    df_print: paged
+runtime: shiny_prerendered
+description: >
+  Assignment for Data Management in R module
+---
+
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(randomNames)
+
+set.seed(1)
+
+Data1 <- data.frame(
+  id  = sample(1:100, size = 100),
+  village_id = sample(1:8, size = 100, replace = TRUE),
+  farmer_name = c(randomNames(50, gender = 0), randomNames(50, gender = 1)),
+  gender = c(sample(c("1", "M", "m", "Male"), 50, replace = TRUE), sample(c("2", "F", "f", "Female"), 50, replace = TRUE)),
+  farm_area = c(sample(seq(from = 2, to = 25, by = 0.4), 99, replace = TRUE), 100),
+  hh_size = sample(c(1:10, -9), size = 100, replace = TRUE),
+  income = sample(c(seq(from = 100, to = 900, by = 60), 0, -9), size = 100, replace = TRUE),
+  costs = sample(c(seq(from = 50, to = 500, by = 20), -9), size = 100, replace = TRUE)
+)
+
+xx <- sample(1:100, 5)
+
+for(i in 1:5){
+  Data1$farmer_name[xx[i]] <- paste0(" ", Data1$farmer_name[xx[i]])
+}
+
+yy <- 1:100
+
+yy <- yy[-xx]
+
+yy <- sample(1:100, 5)
+
+for(i in 1:5){
+  Data1$farmer_name[yy[i]] <- paste0(Data1$farmer_name[yy[i]], " ")
+}
+
+```
+
+## Part 1 - Data Cleaing
+
+### Dataset
+
+To start with you will work on the following data set which contains a number of variables about a list of 100 farmers.
+
+```{r, exercise = FALSE}
+Data1
+```
+
+
+### Exercise 1a - Trim Whitespace
+
+### Exercise 1b - Missing Data
+
+### Exercise 1c - Correcting labels
+
+### Exercise 1d - Correcting outlier values
+
+### Exercise 1e - Creating a new variable
+
+### Ecercise 1f - Sorting data
+
+## Part 2 - Data Reshaping
+
+### Exercise 2a - Pivot longer
+
+### Exercise 2b - Pivot wider
+
+## Part 3 - Data Merging
+
+### Exercise 3a - Binding
+
+### Exercise 3b - Summarising
+
+### Exercise 3c - Joining data
