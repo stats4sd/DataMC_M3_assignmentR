@@ -14,6 +14,7 @@ description: >
 ```{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
+library(learnr)
 library(tidyverse)
 library(randomNames)
 
@@ -58,18 +59,84 @@ To start with you will work on the following data set which contains a number of
 Data1
 ```
 
-
 ### Exercise 1a - Trim Whitespace
+
+```{r, exercise = FALSE}
+unique(Data1$farmer_name)
+```
+Exercise 1a: Using `mutate` and `trimws`, remove the whitespace present in the farmer_name column from both the beginning and the ending of the variable entries
+
+```{r ex1a, exercise = TRUE}
+Data1 <- Data1 %>%
+  mutate()
+```
+
+```{r ex1a-solution}
+Data1 <- Data1 %>%
+  mutate(farmer_name = trimws(farmer_name, which = "both"))
+```
+
 
 ### Exercise 1b - Missing Data
 
+Exercise 1bi: Use `table` to check which variables in the dataset are still using the missing data code `-9` rather than being explicitly `NA`
+
+```{r ex1bi, exercise = TRUE}
+
+```
+
+Exercise 1bii: Using `mutate` and `na_if`, correct the variables that are still using `-9` so that these are instead coded as `NA`
+
+```{r ex1bii, exercise = TRUE}
+Data1 <- Data1 %>%
+  mutate()
+```
+
 ### Exercise 1c - Correcting labels
+
+```{r, exercise = FALSE}
+table(Data1$gender)
+```
+Exercise 1c: Using `mutate` and `case_when`, standardise the gender variable such that
+
+Male, m, M & 1 are all recoded to equal "Male"
+
+Female, f, F & 2 are all recoded to equal "Female"
+
+```{r ex1c, exercise = TRUE}
+Data1 <- Data1 %>%
+  mutate()
+```
 
 ### Exercise 1d - Correcting outlier values
 
+```{r}
+hist(Data1$farm_area)
+```
+
+Exercise 1d: Using any method demonstrated in the workbook, correct this implausibly high value of 99 ha to the correct value of 9 hectares.
+
+```{r ex1d, exercise = TRUE}
+
+```
+
 ### Exercise 1e - Creating a new variable
 
+
+Exercise 1e: Using `mutate` create a new variable called `gross_income` which is the income minus the costs.
+
+```{r}
+
+```
+
 ### Ecercise 1f - Sorting data
+
+Exercise 1f: Using `arrange`, sort the data using the id variable so that the rows are in order from 1 to 100 by id.
+
+```{r}
+
+```
+
 
 ## Part 2 - Data Reshaping
 
